@@ -1,0 +1,124 @@
+import java.util.regex.Matcher
+import java.util.regex.Pattern
+
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "kotlin-android-extensions"
+//    id "com.google.firebase.crashlytics"
+    id "kotlin-kapt"
+    id "androidx.navigation.safeargs.kotlin"
+//    id "com.google.firebase.firebase-perf"
+    id 'dagger.hilt.android.plugin'
+//    id 'com.google.firebase.appdistribution'
+    id 'org.sonarqube'
+
+}
+def versionPropsFile = file('version.properties')
+Properties versionProps = new Properties()
+
+if (versionPropsFile.canRead()) {
+    versionProps.load(new FileInputStream(versionPropsFile))
+}
+def version_code = versionProps['VERSION_CODE'].toInteger()
+def version_name = versionProps['VERSION_NAME']
+
+android {
+
+    //ndkVersion '22.1.7171670'
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+    defaultConfig {
+        applicationId "com.example.basearchitectureproject"
+        minSdkVersion 21
+        targetSdkVersion 30
+        multiDexEnabled true
+        versionCode version_code
+        versionName getCurrentVersionName(version_name)
+
+        buildConfigField("String", "app_version", "\"${defaultConfig.versionName}\"")
+
+        vectorDrawables.useSupportLibrary = true
+
+        testApplicationId "com.example.basearchitectureproject.test"
+        testInstrumentationRunner "com.example.basearchitectureproject.test.CucumberTestRunner"
+
+        buildConfigField("String", "TEST_TAGS", '"' + getTestTags() + '"')
+        buildConfigField("String", "TEST_SCENARIO", '"' + getTestScenario() + '"')
+
+    }
+
+    buildFeatures {
+        dataBinding true
+    }
+
+    lintOptions {
+        disable 'NullSafeMutableLiveData'
+    }
+
+    ndkVersion '21.1.6352462'
+}
+
+def getCurrentFlavor() {
+    Gradle gradle = getGradle()
+    String tskReqStr = gradle.getStartParameter().getTaskRequests().toString()
+
+    Pattern pattern
+
+    if (tskReqStr.contains("assemble"))
+        pattern = Pattern.compile("assemble(\\w+)(Debug)")
+    else
+        pattern = Pattern.compile("generate(\\w+)(Debug)")
+
+    Matcher matcher = pattern.matcher(tskReqStr)
+
+    if (matcher.find())
+        return "${matcher.group(1).toLowerCase()}_"
+    else {
+        println "NO MATCH FOUND"
+        return ""
+    }
+}
+
+def getCurrentVariant() {
+    Gradle gradle = getGradle()
+    String tskReqStr = gradle.getStartParameter().getTaskRequests().toString()
+
+    Pattern pattern
+
+    if (tskReqStr.contains("assemble"))
+        pattern = Pattern.compile("assemble(\\w+)(Debug)")
+    else
+        pattern = Pattern.compile("generate(\\w+)(Debug)")
+
+    Matcher matcher = pattern.matcher(tskReqStr)
+
+    if (matcher.find()) {
+        return "${matcher.group(2).toLowerCase()}_"
+    } else {
+        println "NO MATCH FOUND"
+        return ""
+    }
+}
+
+def getCurrentVersionName(String name) {
+    return "${getCurrentFlavor()}${getCurrentVariant()}${name}"
+}
+
+def getTestTags() {
+    project.getProperties().get('tags') ?: ''
+}
+
+def getTestScenario() {
+    project.getProperties().get('scenario') ?: ''
+}
+//
+apply plugin: "com.google.gms.google-services"
+apply from: "signing.gradle"
+apply from: "flavors.gradle"
+apply from: "dependencies.gradle"
+apply from: "options.gradle"
+
+dependencies {
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+}

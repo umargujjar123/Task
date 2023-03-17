@@ -1,0 +1,18 @@
+android {
+    flavorDimensions "env"
+//    productFlavors {
+//        development {
+//            applicationIdSuffix ".development"
+//            resValue "string", "app_name", "Development Base Architecture Project"
+//            buildConfigField("String", "URL_API", "\"${System.env.URL_API}\"")
+//            dimension "env"
+//        }
+//
+//        production {
+//            applicationIdSuffix ".Production"
+//            resValue "string", "app_name", "Production Base Architecture Project"
+//            buildConfigField "String", "URL_API", '"www.google.com"'
+//            dimension "env"
+//        }
+//    }
+}

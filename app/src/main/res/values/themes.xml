@@ -1,0 +1,43 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.BaseArchitectureProject" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/splash_background</item>
+        <item name="colorPrimaryVariant">@color/splash_background</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/splash_background</item>
+        <item name="colorSecondaryVariant">@color/splash_background</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Status bar color. -->
+    </style>
+
+    <style name="Theme.AirliftGrocer.AppBarOverlay" parent="Theme.BaseArchitectureProject">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="EditTextStyle">
+        <item name="android:textColorHint">@color/homescreenmanu</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/black_text_color</item>
+        <item name="android:lineSpacingExtra">5sp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">40sp</item>
+        <item name="android:background">@drawable/rounded_edittest_bg</item>
+        <item name="android:padding">8sp</item>
+    </style>
+
+    <style name="EditTextStyleLogin">
+        <item name="android:textColorHint">@color/homescreenmanu</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/black_text_color</item>
+        <item name="android:lineSpacingExtra">5sp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">40sp</item>
+        <item name="android:background">@drawable/edit_text_login_bg</item>
+        <item name="android:padding">8sp</item>
+    </style>
+</resources>

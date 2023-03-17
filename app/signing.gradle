@@ -1,0 +1,26 @@
+android {
+//    signingConfigs {
+//        release {
+//            keyAlias 'BaseArchitectureProject'
+//            keyPassword 'test123'
+//            storeFile file('keystore.jks')
+//            storePassword 'test123'
+//        }
+//
+//        debug {
+//            storeFile file('debug.keystore')
+//            storePassword "android"
+//            keyAlias "androiddebugkey"
+//            keyPassword "android"
+//        }
+//    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+//            signingConfig signingConfigs.release
+        }
+    }
+}

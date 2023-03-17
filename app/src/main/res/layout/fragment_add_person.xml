@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.basearchitectureproject.person.viewmodel.AddPersonViewModel" />
+
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+<!--        <com.google.android.material.appbar.AppBarLayout-->
+<!--            android:id="@+id/appBar"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:theme="@style/Theme.AirliftGrocer.AppBarOverlay"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent">-->
+
+<!--            <androidx.appcompat.widget.Toolbar-->
+<!--                android:id="@+id/toolbar"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="?android:actionBarSize"-->
+<!--                android:background="@color/teal_700"-->
+<!--                android:orientation="vertical"-->
+<!--                android:theme="@style/ThemeOverlay.AppCompat.ActionBar"-->
+<!--                app:contentInsetEnd="0dp"-->
+<!--                app:contentInsetLeft="0dp"-->
+<!--                app:contentInsetRight="0dp"-->
+<!--                app:contentInsetStart="0dp"-->
+<!--                app:navigationIcon="?attr/homeAsUpIndicator"-->
+<!--                app:popupTheme="@style/ThemeOverlay.AppCompat.Light">-->
+
+<!--            </androidx.appcompat.widget.Toolbar>-->
+
+<!--        </com.google.android.material.appbar.AppBarLayout>-->
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="10dp"
+            android:id="@+id/pName"
+            />
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/pName"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="10dp"
+            android:id="@+id/pAge"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/pAge"
+            android:layout_marginTop="10dp"
+            android:text="Add Person"
+            android:onClick="@{()->viewModel.addPersonAction()}"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

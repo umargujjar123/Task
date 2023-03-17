@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModelM"
+            type="com.example.basearchitectureproject.login.viewModel.LoginViewModel" />
+
+        <variable
+            name="loginDataModel"
+            type="com.example.basearchitectureproject.login.model.LoginDataModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="email"
+            android:elevation="4dp"
+            android:background="@drawable/bg"
+            android:textColor="@color/black"
+           android:layout_margin="12dp"
+            android:inputType="textEmailAddress"
+            android:padding="8dp"
+            android:text="@={loginDataModel.email}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+           android:layout_margin="12dp"
+            android:hint="password"
+
+            android:elevation="4dp"
+            android:background="@drawable/bg"
+            android:textColor="@color/black"
+            android:inputType="textEmailAddress"
+            android:padding="8dp"
+            android:text="@={loginDataModel.password}"
+            app:layout_constraintTop_toBottomOf="@+id/email" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:onClick="@{()->viewModelM.btnLogin()}"
+            android:text="login"
+            android:elevation="4dp"
+            android:background="@drawable/bg"
+            app:layout_constraintTop_toBottomOf="@id/password" />
+        <ProgressBar
+            android:id="@+id/progressbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="invisible"
+            android:elevation="10dp"
+            android:indeterminate="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

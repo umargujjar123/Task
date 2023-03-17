@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="action_accountFragment_to_callToSupport" type="id"/>
+    <item name="action_sms_promotional_consent" type="id"/>
+    <item name="action_email_promotional_consent" type="id"/>
+    <item name="tag_navigation_destination_id" type="id"/>
+</resources>
